@@ -1,0 +1,46 @@
+.flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.flexColumn {
+	@extend .flex;
+	flex-direction: column;
+}
+
+.userInput {
+	@extend .flex;
+	width: 100%;
+
+	.input {
+		background-color: transparent;
+		border: none;
+		outline-width: 0;
+		text-align: center;
+		display: inline-block;
+		border-bottom: 1px solid var(--lightGrey);
+		font-family: monospace;
+		width: 80%;
+		height: 35px;
+		line-height: 35px;
+		font-size: 30px;
+		color: rgb(95, 94, 97);
+		padding: 0 0 0 0;
+		&::placeholder {
+			color: lightvar(--lightGrey);
+		}
+	}
+	.addButton {
+		display: inline-block;
+		outline-width: 0;
+		float: center;
+		height: 39px;
+		width: auto;
+		color: black;
+		font-family: monospace;
+		font-size: 20px;
+		text-align: center;
+		line-height: 39px;
+		cursor: pointer;
+	}
+}

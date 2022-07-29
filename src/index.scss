@@ -8,6 +8,17 @@
   --lightGrey:#afb1ae;
 }
 
+.flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.flexColumn {
+	@extend .flex;
+	flex-direction: column;
+}
+
+
 
 body {
   margin: 0;

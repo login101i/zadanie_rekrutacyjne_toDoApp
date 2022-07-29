@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.scss";
 
+import { Timer, Input, ToDoList, DoneList } from "./components";
+
 export default class App extends Component {
 	constructor(props) {
 		super(props);
@@ -67,72 +69,27 @@ export default class App extends Component {
 			this.addToList(this.state.userinput);
 		}
 	};
-	// zmieniona nazwa f
 
 	render() {
 		return (
-
-  
 			<div className="App">
 				<div className="container">
-					<h1>{this.state.time}</h1>
-					<div className="userInput">
-						<input
-							onKeyPress={this.handleKeyPress}
-							placeholder="ENTER TASK"
-							onChange={(e) => this.handleChangeInput(e.target.value)}
-							value={this.state.userinput}
-							type="text"
-							className="input"
-						/>
-						{this.state.userinput && (
-							<div
-								className="addButton"
-								onClick={() => this.addToList(this.state.userinput)}
-							>
-								ADD
-							</div>
-						)}
-					</div>
-					{this.state.items.length > 0 && (
-						<>
-							<h1 className="todo">TO DO</h1>
-
-							<div className="toDoListContainer">
-								<ul className="toDoList">
-									{this.state.items.map((item, index) => (
-										<>
-											<li onClick={(e) => this.deleteTask(index)} key={index}>
-												{item}
-
-												<button
-													className="todoCompleted"
-													onClick={(e) => this.toDoCompteted(item)}
-												>
-													DONE
-												</button>
-											</li>
-										</>
-									))}
-								</ul>
-							</div>
-						</>
-					)}
-					{this.state.done.length > 0 && <h1 className="done">DONE</h1>}
-
-					{this.state.done.length > 0 && (
-						<>
-							<div className="doneListContainer">
-								<ul className="doneList">
-									{this.state.done.map((item, index) => (
-										<li onClick={(e) => this.handleDelete(index)} key={index}>
-											{item} <span>✔ </span>
-										</li>
-									))}
-								</ul>
-							</div>
-						</>
-					)}
+					<Timer time={this.state.time} />
+					<Input
+						onKeyPress={this.handleKeyPress}
+						onChange={this.handleChangeInput}
+						userInput={this.state.userinput}
+						addToList={this.addToList}
+					/>
+					<ToDoList
+						items={this.state.items}
+						toDoCompleted={this.toDoCompteted}
+						deleteTask={this.deleteTask}
+					/>
+					<DoneList
+						doneItems={this.state.done}
+						handleDelete={this.handleDelete}
+					/>
 				</div>
 			</div>
 		);
