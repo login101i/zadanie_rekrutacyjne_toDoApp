@@ -1,148 +1,276 @@
-.container {
-  border-radius: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: white;
-  font-family: monospace;
-  width: 40vw;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.flexColumn {
+	@extend .flex;
+	flex-direction: column;
 }
 
-input {
-  background-color: transparent;
-  border: none;
-  outline-width: 0;
-  text-align: center;
-  display: inline-block;
-  border-bottom: 1px solid #CCC;
-  float: left;
-  font-family: monospace;
-  width: 88%;
-  height: 35px;
-  line-height: 35px;
-  font-size: 30px;
-  color: rgb(95, 94, 97);
-  padding: 0 0 0 0;
+.App {
+	font-family: "Ubuntu";
+	background-color: var(--blue);
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.container {
+		@extend .flexColumn;
+		border-radius: 10px;
+		background-color: var(--white);
+		font-family: monospace;
+		width: 60vw;
+		margin: auto;
+		min-height: 300px;
+		max-height: 80%;
+		.userInput {
+			@extend .flex;
+			width: 100%;
 
-  &::placeholder {
-    color: lightgrey;
-  }
-}
+			.input {
+				background-color: transparent;
+				border: none;
+				outline-width: 0;
+				text-align: center;
+				display: inline-block;
+				border-bottom: 1px solid var(--lightGrey);
+				font-family: monospace;
+				width: 80%;
+				height: 35px;
+				line-height: 35px;
+				font-size: 30px;
+				color: rgb(95, 94, 97);
+				padding: 0 0 0 0;
+				&::placeholder {
+					color: lightvar(--lightGrey);
+				}
+			}
+			.addButton {
+				display: inline-block;
+				outline-width: 0;
+				float: center;
+				height: 39px;
+				width: auto;
+				color: black;
+				font-family: monospace;
+				font-size: 20px;
+				text-align: center;
+				line-height: 39px;
+				cursor: pointer;
+			}
+		}
+		.todo {
+			color: var(--green);
+		}
+		.toDoListContainer {
+			overflow-y: scroll;
+			scrollbar-width: none;
+			-ms-overflow-style: none;
+			width: 90%;
+			@extend .flexColumn;
 
-.userinput {
-  width: 100%;
-}
+			margin: 10px 0px;
+			ul.toDoList {
+				width: 80%;
+				@extend .flexColumn;
+				padding: 0px 10px;
 
-span {
-  color: green
-}
+				li {
+					overflow: auto;
+					animation: slidein 0.2s;
+					animation-fill-mode: forwards;
+					position: relative;
+					line-height: 50px;
+					font-size: 25px;
+					width: 100%;
+					height: 50px;
+					margin-top: 3px;
+					text-align: center;
+					color: var(--lightGrey);
+					border-color: var(--lightGrey);
+					list-style-type: none;
+					border-bottom: 1px solid;
 
-.addbutton {
-  display: inline-block;
-  outline-width: 0;
-  float: left;
-  height: 39px;
-  width: 11%;
-  color: black;
-  font-family: monospace;
-  font-size: 20px;
-  text-align: center;
-  line-height: 39px;
-  cursor: pointer;
+					&:hover {
+						color: var(--tomato);
+						border-color: var(--tomato);
+						font-weight: bold;
+						cursor: pointer;
+					}
+
+					.todoCompleted {
+						position: absolute;
+						right: 0;
+						top: 20px;
+						color: var(--green);
+						background-color: var(--white);
+					}
+				}
+			}
+		}
+		.toDoListContainer::-webkit-scrollbar {
+			width: 8px;
+		}
+		.toDoListContainer::-webkit-scrollbar-thumb {
+			background-color: var(--blue);
+			border-radius: 50px;
+		}
+		.toDoListContainer::-webkit-scrollbar-track {
+			background-color: var(--darkBlue);
+			border-radius: 50px;
+		}
+		.doneListContainer {
+			overflow-y: scroll;
+			width: 90%;
+			@extend .flexColumn;
+			margin: 10px 0px;
+
+			.doneList {
+				width: 80%;
+				display: flex;
+				@extend .flexColumn;
+
+				padding: 0px 10px;
+
+				.done {
+					color: var(--green);
+				}
+				li {
+					overflow: auto;
+					animation: slidein 0.2s;
+					animation-fill-mode: forwards;
+					position: relative;
+					line-height: 50px;
+					font-size: 25px;
+					width: 100%;
+					height: 50px;
+					margin-top: 3px;
+					text-align: center;
+					color: var(--lightGrey);
+					border-color: var(--lightGrey);
+					list-style-type: none;
+					border-bottom: 1px solid;
+					&:hover {
+						color: var(--tomato);
+						border-color: var(--tomato);
+						cursor: pointer;
+					}
+				}
+				span {
+					color: var(--green);
+				}
+			}
+		}
+		.doneListContainer::-webkit-scrollbar {
+			width: 8px;
+		}
+		.doneListContainer::-webkit-scrollbar-thumb {
+			background-color: var(--blue);
+			border-radius: 50px;
+		}
+		.doneListContainer::-webkit-scrollbar-track {
+			background-color: var(--darkBlue);
+			border-radius: 50px;
+		}
+	}
+	button {
+		cursor: pointer;
+	}
+	span,
+	button {
+		animation: opacity 0.5s;
+		animation-fill-mode: forwards;
+		&:hover {
+			font-weight: bold;
+		}
+	}
+	button {
+		border: none;
+		outline-width: 0;
+	}
 }
 
 h1 {
-  text-align: center;
+	text-align: center;
 }
 
-.todo {
-  color: green;
+@media only screen and (max-width: 600px) {
+	.App {
+		align-items: flex-start;
+		.container {
+			border-radius: 5px;
+			width: 80vw;
+			max-height: 80vh;
+			margin: 30px auto;
 
+			.userInput {
+				.input {
+					height: 25px;
+					font-size: 20px;
+				}
+				.addButton {
+					height: 39px;
+					width: 20%;
+					font-size: 22px;
+				}
+			}
+			.todo {
+				font-size: 16px;
+			}
+
+			.toDoListContainer {
+				ul.toDoList {
+					width: 90%;
+					li {
+						line-height: 30px;
+						font-size: 16px;
+						width: 100%;
+						height: 30px;
+						.todoCompleted {
+							top: 10px;
+							margin: 20px;
+						}
+					}
+				}
+			}
+			.doneListContainer {
+				.doneList {
+					.done {
+						color: var(--green);
+					}
+					li {
+						line-height: 40px;
+						font-size: 20px;
+						height: 40px;
+					}
+					span {
+						color: var(--green);
+					}
+				}
+			}
+		}
+	}
 }
-
-.done {
-  color: green;
-}
-
-ul {
-  padding: 0 0 0 0;
-  width: 100%;
-}
-
-button {
-  cursor: pointer;
-}
-
-.left {
-  position: absolute;
-  right: 0;
-  top: 20px;
-  background-color: white;
-  color: green;
-}
-
 @keyframes slidein {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-  100% {
-    width: 100%;
-    opacity: 1;
-  }
+	0% {
+		width: 0;
+		opacity: 0;
+	}
+	100% {
+		width: 100%;
+		opacity: 1;
+	}
 }
-
 @keyframes opacity {
-  0% {
-    opacity: 0;
-  }
-  40% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-li {
-  overflow: auto;
-  animation: slidein 0.2s;
-  animation-fill-mode: forwards;
-  position: relative;
-  line-height: 50px;
-  font-size: 25px;
-  width: 100%;
-  height: 50px;
-  margin-top: 3px;
-  text-align: center;
-  color: grey;
-  border-color: grey;
-  list-style-type: none;
-  border-bottom: 1px solid;
-
-  &:hover {
-    color: tomato;
-    border-color: tomato;
-    cursor: pointer;
-  }
-
-  span, button {
-    animation: opacity 0.5s;
-    animation-fill-mode: forwards;
-
-    &:hover {
-      font-weight: bold;
-    }
-  }
-
-  button {
-    background-color: transparent;
-    border: none;
-    outline-width: 0;
-  }
-
+	0% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
