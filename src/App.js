@@ -8,66 +8,28 @@ export default class App extends Component {
 		super(props);
 
 		this.state = {
-			items: [],
-			userinput: "",
+			toDoItems: [],
+			doneItems: [],
 			time: setInterval(
 				() => this.setState({ time: new Date().toLocaleTimeString() }),
 				1000
-			),
-			done: [],
-			temperature: 0
+			)
 		};
 	}
 
-	handleChangeInput = (input) => {
-		this.setState({
-			userinput: input
-		});
+	addItemToList = (inputValue) => {
+		this.setState((prevState) => ({
+			...prevState,
+			toDoItems: [...prevState.toDoItems, inputValue]
+		}));
 	};
 
-	addToList = (input) => {
-		if (this.state.userinput === "") {
-			alert("empty input");
-		} else {
-			const newitems = this.state.items;
-			newitems.push(input);
-			this.setState({
-				items: newitems,
-				userinput: ""
-			});
-		}
-	};
-
-	deleteTask = (indexp) => {
-		const newarray = this.state.items.filter((item, index) => index !== indexp);
-		this.setState({
-			items: newarray
-		});
-	};
-
-	handleDelete = (indexp) => {
-		const newarray = this.state.done.filter((item, index) => index !== indexp);
-		this.setState({
-			done: newarray
-		});
-	};
-
-	toDoCompteted = (e) => {
-		const donelist = this.state.done;
-		donelist.push(e);
-		this.setState({
-			done: donelist
-		});
-
-		if (this.state.items.length === 1) {
-			alert("Good job!", "You clicked the button!", "success");
-		}
-	};
-
-	handleKeyPress = (event) => {
-		if (event.key === "Enter") {
-			this.addToList(this.state.userinput);
-		}
+	updateLists = (toDoItems, doneItems) => {
+		this.setState((prevState) => ({
+			...prevState,
+			toDoItems,
+			doneItems
+		}));
 	};
 
 	render() {
@@ -75,20 +37,18 @@ export default class App extends Component {
 			<div className="App">
 				<div className="container">
 					<Timer time={this.state.time} />
-					<Input
-						onKeyPress={this.handleKeyPress}
-						onChange={this.handleChangeInput}
-						userInput={this.state.userinput}
-						addToList={this.addToList}
-					/>
+					<Input addItemToList={this.addItemToList} />
 					<ToDoList
-						items={this.state.items}
-						toDoCompleted={this.toDoCompteted}
-						deleteTask={this.deleteTask}
+						toDoItems={this.state.toDoItems}
+						doneItems={this.state.doneItems}
+						updateLists={this.updateLists}
 					/>
+
 					<DoneList
-						doneItems={this.state.done}
+						toDoItems={this.state.toDoItems}
+						doneItems={this.state.doneItems}
 						handleDelete={this.handleDelete}
+						updateLists={this.updateLists}
 					/>
 				</div>
 			</div>

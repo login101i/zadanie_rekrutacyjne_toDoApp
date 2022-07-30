@@ -20,12 +20,13 @@
 		display: inline-block;
 		border-bottom: 1px solid var(--lightGrey);
 		font-family: monospace;
-		width: 80%;
+		width: 70%;
 		height: 35px;
 		line-height: 35px;
 		font-size: 30px;
 		color: rgb(95, 94, 97);
 		padding: 0 0 0 0;
+		text-transform: capitalize;
 		&::placeholder {
 			color: lightvar(--lightGrey);
 		}
@@ -42,5 +43,7 @@
 		text-align: center;
 		line-height: 39px;
 		cursor: pointer;
+
+		margin-left: 40px;
 	}
 }
