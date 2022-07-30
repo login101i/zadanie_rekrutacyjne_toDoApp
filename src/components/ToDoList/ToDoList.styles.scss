@@ -38,7 +38,7 @@
 				height: 50px;
 				margin-top: 5px;
 				text-align: center;
-				color: var(--lightGrey);
+				color: var(--textColor);
 				list-style-type: none;
 				overflow: hidden !important;
 				white-space: nowrap;
@@ -46,12 +46,10 @@
 				max-width: 90% !important;
 				margin-left: 83px;
 				text-transform: capitalize;
-                
 
 				&:hover {
 					color: var(--tomato);
 					border-color: var(--tomato);
-					font-weight: bold;
 					cursor: pointer;
 				}
 			}
@@ -59,6 +57,11 @@
 				color: var(--green);
 				background-color: var(--white);
 				margin-left: 40px;
+			}
+			.darkMode {
+				transition: 0.1s all ease-in-out;
+				background-color: var(--darkMode);
+				color: white;
 			}
 		}
 	}

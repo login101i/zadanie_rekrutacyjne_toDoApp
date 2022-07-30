@@ -1,7 +1,7 @@
 import React from "react";
 import "./ToDoList.styles.scss";
 
-export const ToDoList = ({ toDoItems, doneItems, updateLists }) => {
+export const ToDoList = ({ toDoItems, doneItems, updateLists, darkMode }) => {
 	const toDoCompleted = (item) => {
 		const newArray = toDoItems.filter((doDoItem) => doDoItem !== item);
 		doneItems.push(item);
@@ -26,9 +26,16 @@ export const ToDoList = ({ toDoItems, doneItems, updateLists }) => {
 						<ul className="toDoList">
 							{toDoItems.map((item, index) => (
 								<div className="flex borderBottom" key={index}>
-									<li onClick={(e) => deleteTask(item)}>{item}</li>
+									<li
+										onClick={(e) => deleteTask(item)}
+										className={darkMode ? " darkMode" : ""}
+									>
+										{item}
+									</li>
 									<button
-										className="todoCompleted"
+										className={
+											darkMode ? "todoCompleted darkMode" : "todoCompleted"
+										}
 										onClick={(e) => toDoCompleted(item)}
 									>
 										DONE

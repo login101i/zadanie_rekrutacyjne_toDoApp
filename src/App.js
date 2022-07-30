@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./App.scss";
 
 import { Timer, Input, ToDoList, DoneList } from "./components";
+import { AppContainer, DarkModeButton } from "./components";
 
 export default class App extends Component {
 	constructor(props) {
@@ -13,7 +13,8 @@ export default class App extends Component {
 			time: setInterval(
 				() => this.setState({ time: new Date().toLocaleTimeString() }),
 				1000
-			)
+			),
+			darkMode: "false"
 		};
 	}
 
@@ -32,16 +33,30 @@ export default class App extends Component {
 		}));
 	};
 
+	handleDarkMode = () => {
+		this.setState((prevState) => ({
+			...prevState,
+			darkMode: !prevState.darkMode
+		}));
+	};
+
 	render() {
 		return (
-			<div className="App">
-				<div className="container">
-					<Timer time={this.state.time} />
-					<Input addItemToList={this.addItemToList} />
+			<>
+				<AppContainer
+					darkMode={this.state.darkMode}
+					handleDarkMode={this.handleDarkMode}
+				>
+					<Timer time={this.state.time} darkMode={this.state.darkMode} />
+					<Input
+						addItemToList={this.addItemToList}
+						darkMode={this.state.darkMode}
+					/>
 					<ToDoList
 						toDoItems={this.state.toDoItems}
 						doneItems={this.state.doneItems}
 						updateLists={this.updateLists}
+						darkMode={this.state.darkMode}
 					/>
 
 					<DoneList
@@ -49,9 +64,10 @@ export default class App extends Component {
 						doneItems={this.state.doneItems}
 						handleDelete={this.handleDelete}
 						updateLists={this.updateLists}
+						darkMode={this.state.darkMode}
 					/>
-				</div>
-			</div>
+				</AppContainer>
+			</>
 		);
 	}
 }

@@ -1,7 +1,7 @@
 .flex {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 }
 .flexColumn {
 	@extend .flex;
@@ -17,6 +17,7 @@
 	align-items: center;
 	justify-content: center;
 	.container {
+		position: relative;
 		@extend .flexColumn;
 		border-radius: 10px;
 		background-color: var(--white);
@@ -24,21 +25,29 @@
 		margin: auto;
 		min-height: 300px;
 		max-height: 80%;
+		transition: 0.25s all ease-in-out;
+		
 	}
+	.darkMode {
+		transition: 0.1s all ease-in-out;
+		background-color: var(--darkMode);
+		color: white;
+	}
+
 	button {
 		cursor: pointer;
+		border: none;
+		outline-width: 0;
 	}
+
 	span,
 	button {
 		animation: opacity 0.5s;
 		animation-fill-mode: forwards;
+		transition: 0.3s all ease-in-out;
 		&:hover {
 			font-weight: bold;
 		}
-	}
-	button {
-		border: none;
-		outline-width: 0;
 	}
 }
 
@@ -48,13 +57,11 @@ h1 {
 
 @media only screen and (max-width: 600px) {
 	.App {
-		align-items: flex-start;
 		.container {
 			border-radius: 5px;
 			width: 80vw;
 			max-height: 80vh;
 			margin: 30px auto;
-
 			.userInput {
 				.input {
 					height: 25px;
@@ -78,6 +85,7 @@ h1 {
 						font-size: 16px;
 						width: 100%;
 						height: 30px;
+						margin-left: 20px;
 						.todoCompleted {
 							top: 10px;
 							margin: 20px;
@@ -87,13 +95,16 @@ h1 {
 			}
 			.doneListContainer {
 				.doneList {
+					width: 90%;
 					.done {
 						color: var(--green);
 					}
 					li {
-						line-height: 40px;
-						font-size: 20px;
-						height: 40px;
+						line-height: 30px;
+						font-size: 16px;
+						width: 100%;
+						height: 30px;
+						margin-left: 20px;
 					}
 					span {
 						color: var(--green);

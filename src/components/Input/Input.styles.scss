@@ -24,11 +24,13 @@
 		height: 35px;
 		line-height: 35px;
 		font-size: 30px;
-		color: rgb(95, 94, 97);
+		color: var(--textColor);
 		padding: 0 0 0 0;
+		text-overflow: ellipsis !important;
+		margin-left: 23px;
 		text-transform: capitalize;
 		&::placeholder {
-			color: lightvar(--lightGrey);
+			color: var(--lightGrey);
 		}
 	}
 	.addButton {
@@ -45,5 +47,26 @@
 		cursor: pointer;
 
 		margin-left: 40px;
+	}
+
+	.darkMode {
+		transition: 0.1s all ease-in-out;
+		background-color: var(--darkMode);
+		color: white;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.App {
+		.container {
+			.userInput {
+				.input {
+					font-size: 11px;
+				}
+				.addButton {
+					margin-right: 15px;
+				}
+			}
+		}
 	}
 }

@@ -4,7 +4,9 @@
 	--white: #f7f7f7;
 	--tomato: #d75d25;
 	--green: #3fa50b;
-	--lightGrey: #afb1ae;
+	--lightGrey: #949e9e;
+	--darkMode: #363333;
+	--textColor: #1d1c1c;;
 }
 
 .borderBottom {
@@ -18,7 +20,6 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-
 }
 
 code {
@@ -26,7 +27,6 @@ code {
 		monospace;
 }
 
-
-.darkMode{
-  background-color:var(--dark)
+.darkMode {
+	background-color: var(--darkMode);
 }

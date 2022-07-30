@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Input.styles.scss";
 
-export const Input = ({ addItemToList }) => {
+export const Input = ({ addItemToList, darkMode }) => {
 	const [userInput, setUserInput] = useState("");
 
 	const handleChangeInput = (inputValue) => {
@@ -31,10 +31,13 @@ export const Input = ({ addItemToList }) => {
 				onChange={(e) => handleChangeInput(e.target.value)}
 				value={userInput}
 				type="text"
-				className="input"
+				className={darkMode ? "darkMode input " : "input"}
 			/>
 			{userInput && (
-				<div className="addButton" onClick={() => addToList(userInput)}>
+				<div
+					className={darkMode ? "addButton darkMode" : "addButton"}
+					onClick={() => addToList(userInput)}
+				>
 					ADD
 				</div>
 			)}
