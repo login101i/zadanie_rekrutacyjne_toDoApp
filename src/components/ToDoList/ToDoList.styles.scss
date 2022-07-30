@@ -1,7 +1,7 @@
 .flex {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	// justify-content: center;
 }
 .flexColumn {
 	@extend .flex;
@@ -12,47 +12,53 @@
 	color: var(--green);
 }
 .toDoListContainer {
-	overflow-y: scroll;
+	overflow-y: auto;
 	scrollbar-width: none;
 	-ms-overflow-style: none;
 	width: 90%;
 	@extend .flexColumn;
-
 	margin: 10px 0px;
-	ul.toDoList {
-		width: 80%;
+
+	.toDoList {
+		width: 90%;
+		display: flex;
 		@extend .flexColumn;
 		padding: 0px 10px;
 
-		li {
-			overflow: auto;
-			animation: slidein 0.2s;
-			animation-fill-mode: forwards;
-			position: relative;
-			line-height: 50px;
-			font-size: 25px;
+		.flex {
 			width: 100%;
-			height: 50px;
-			margin-top: 3px;
-			text-align: center;
-			color: var(--lightGrey);
-			border-color: var(--lightGrey);
-			list-style-type: none;
-			border-bottom: 1px solid;
+			overflow: hidden;
 
-			&:hover {
-				color: var(--tomato);
-				border-color: var(--tomato);
-				font-weight: bold;
-				cursor: pointer;
+			li {
+				animation: slidein 0.2s;
+				animation-fill-mode: forwards;
+				position: relative;
+				line-height: 50px;
+				font-size: 25px;
+				height: 50px;
+				margin-top: 5px;
+				text-align: center;
+				color: var(--lightGrey);
+				list-style-type: none;
+				overflow: hidden !important;
+				white-space: nowrap;
+				text-overflow: ellipsis !important;
+				max-width: 90% !important;
+				margin-left: 83px;
+				text-transform: capitalize;
+                
+
+				&:hover {
+					color: var(--tomato);
+					border-color: var(--tomato);
+					font-weight: bold;
+					cursor: pointer;
+				}
 			}
-
 			.todoCompleted {
-				position: absolute;
-				right: 0;
-				top: 20px;
 				color: var(--green);
 				background-color: var(--white);
+				margin-left: 40px;
 			}
 		}
 	}

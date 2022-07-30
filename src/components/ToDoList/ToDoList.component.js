@@ -1,28 +1,39 @@
 import React from "react";
 import "./ToDoList.styles.scss";
 
-export const ToDoList = ({ items, toDoCompleted, deleteTask }) => {
+export const ToDoList = ({ toDoItems, doneItems, updateLists }) => {
+	const toDoCompleted = (item) => {
+		const newArray = toDoItems.filter((doDoItem) => doDoItem !== item);
+		doneItems.push(item);
+		updateLists(newArray, doneItems);
+
+		if (toDoItems.length === 1) {
+			alert("Good job!", "You clicked the button!", "success");
+		}
+	};
+
+	const deleteTask = (item) => {
+		const newArray = toDoItems.filter((doDoItem) => doDoItem !== item);
+		updateLists(newArray, doneItems);
+	};
+
 	return (
 		<>
-			{items.length > 0 && (
+			{toDoItems.length > 0 && (
 				<>
 					<h1 className="todo">TO DO</h1>
-
 					<div className="toDoListContainer">
 						<ul className="toDoList">
-							{items.map((item, index) => (
-								<>
-									<li key={index} onClick={(e) => deleteTask(index)}>
-										{item}
-
-										<button
-											className="todoCompleted"
-											onClick={(e) => toDoCompleted(item)}
-										>
-											DONE
-										</button>
-									</li>
-								</>
+							{toDoItems.map((item, index) => (
+								<div className="flex borderBottom" key={index}>
+									<li onClick={(e) => deleteTask(item)}>{item}</li>
+									<button
+										className="todoCompleted"
+										onClick={(e) => toDoCompleted(item)}
+									>
+										DONE
+									</button>
+								</div>
 							))}
 						</ul>
 					</div>

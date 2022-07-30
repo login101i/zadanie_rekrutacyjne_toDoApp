@@ -1,19 +1,24 @@
 import React from "react";
 import "./DoneList.styles.scss";
 
-export const DoneList = ({ doneItems, handleDelete }) => {
+export const DoneList = ({ toDoItems, doneItems, updateLists }) => {
+	const handleDelete = (item) => {
+		const newArray = doneItems.filter((doneItem) => doneItem !== item);
+		updateLists(toDoItems, newArray);
+	};
 	return (
 		<>
 			{doneItems.length > 0 && <h1 className="done">DONE</h1>}
 
 			{doneItems.length > 0 && (
 				<>
-					<div className="doneListContainer">
-						<ul className="doneList">
+					<div className="doneListContainer ">
+						<ul className="doneList ">
 							{doneItems.map((item, index) => (
-								<li key={index} onClick={(e) => handleDelete(index)}>
-									{item} <span>✔ </span>
-								</li>
+								<div className="flex borderBottom" key={index}>
+									<li onClick={(e) => handleDelete(item)}>{item}</li>
+									<span>✔ </span>
+								</div>
 							))}
 						</ul>
 					</div>
