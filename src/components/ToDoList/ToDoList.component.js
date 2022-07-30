@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { Modal } from "../Modal/Modal.component";
 import "./ToDoList.styles.scss";
 
 export const ToDoList = ({ toDoItems, doneItems, updateLists, darkMode }) => {
+	const [isOpen, setIsOpen] = useState(false);
 	const toDoCompleted = (item) => {
 		const newArray = toDoItems.filter((doDoItem) => doDoItem !== item);
 		doneItems.push(item);
 		updateLists(newArray, doneItems);
-
-		if (toDoItems.length === 1) {
-			alert("Good job!", "You clicked the button!", "success");
-		}
+		setIsOpen(true);
 	};
 
 	const deleteTask = (item) => {
@@ -45,6 +44,12 @@ export const ToDoList = ({ toDoItems, doneItems, updateLists, darkMode }) => {
 						</ul>
 					</div>
 				</>
+			)}
+			{isOpen && toDoItems.length === 0 && (
+				<Modal
+					title="Good job! You have finished all your task!"
+					setIsOpen={setIsOpen}
+				/>
 			)}
 		</>
 	);

@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Modal } from "../Modal/Modal.component";
 import "./Input.styles.scss";
 
 export const Input = ({ addItemToList, darkMode }) => {
 	const [userInput, setUserInput] = useState("");
+	const [isOpen, setIsOpen] = useState(false);
 
 	const handleChangeInput = (inputValue) => {
 		setUserInput(inputValue);
@@ -16,7 +18,7 @@ export const Input = ({ addItemToList, darkMode }) => {
 
 	const addToList = (inputValue) => {
 		if (userInput === "") {
-			alert("empty input");
+			setIsOpen(true)
 		} else {
 			addItemToList(inputValue);
 			setUserInput("");
@@ -40,6 +42,9 @@ export const Input = ({ addItemToList, darkMode }) => {
 				>
 					ADD
 				</div>
+			)}
+			{isOpen && (
+				<Modal title="Empty input! Plese try again" setIsOpen={setIsOpen} />
 			)}
 		</div>
 	);
