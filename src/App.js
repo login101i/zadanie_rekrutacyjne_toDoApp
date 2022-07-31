@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
 import { Timer, Input, ToDoList, DoneList } from "./components";
-import { AppContainer, DarkModeButton } from "./components";
+import { AppContainer } from "./components";
+import { useFetchTasks } from "./utils/useFetchTasks";
 
 export default class App extends Component {
 	constructor(props) {
@@ -10,6 +11,7 @@ export default class App extends Component {
 		this.state = {
 			toDoItems: [],
 			doneItems: [],
+			fetchToDos: [],
 			time: setInterval(
 				() => this.setState({ time: new Date().toLocaleTimeString() }),
 				1000

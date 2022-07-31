@@ -1,6 +1,6 @@
 import React from "react";
-import "../AppContainer/AppContainer.styles.scss";
 import { DarkModeButton } from "../DarkModeButton/DarkModeButton.component";
+import "../AppContainer/AppContainer.styles.scss";
 
 export const AppContainer = ({ darkMode, handleDarkMode, children }) => {
 	return (

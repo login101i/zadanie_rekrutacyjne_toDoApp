@@ -21,12 +21,13 @@
 		@extend .flexColumn;
 		border-radius: 10px;
 		background-color: var(--white);
-		width: 60vw;
+		width: 80vw;
+		max-width: 800px;
 		margin: auto;
+        padding-bottom:30px;
 		min-height: 300px;
 		max-height: 80%;
 		transition: 0.25s all ease-in-out;
-		
 	}
 	.darkMode {
 		transition: 0.1s all ease-in-out;
@@ -78,7 +79,7 @@ h1 {
 			}
 
 			.toDoListContainer {
-				ul.toDoList {
+				.toDoList {
 					width: 90%;
 					li {
 						line-height: 30px;
@@ -93,12 +94,13 @@ h1 {
 					}
 				}
 			}
+			.done {
+				color: var(--green);
+			}
 			.doneListContainer {
 				.doneList {
 					width: 90%;
-					.done {
-						color: var(--green);
-					}
+
 					li {
 						line-height: 30px;
 						font-size: 16px;

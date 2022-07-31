@@ -5,13 +5,18 @@
 .flexColumn {
 	@extend .flex;
 	flex-direction: column;
+	justify-content: flex-start;
 }
-
+.done {
+	font-size: 20px;
+	color: var(--green);
+	margin-top: 40px;
+}
 .doneListContainer {
+	min-height: 140px;
 	overflow-y: auto;
 	width: 90%;
 	@extend .flexColumn;
-	margin: 10px 0px;
 
 	.doneList {
 		width: 90%;
@@ -19,6 +24,7 @@
 		display: flex;
 		@extend .flexColumn;
 		padding: 0px 10px;
+		color: green;
 
 		.flex {
 			width: 100%;
@@ -29,7 +35,7 @@
 				animation-fill-mode: forwards;
 				position: relative;
 				line-height: 50px;
-				font-size: 25px;
+				font-size: 20px;
 				height: 50px;
 				margin-top: 3px;
 				text-align: center;
@@ -59,6 +65,7 @@
 			color: var(--green);
 			margin-left: 40px;
 			font-size: 30px;
+			margin-right: 25px;
 		}
 	}
 }

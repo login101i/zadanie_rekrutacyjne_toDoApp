@@ -9,6 +9,8 @@
 }
 
 .todo {
+	font-size: 20px;
+
 	color: var(--green);
 }
 .toDoListContainer {
@@ -17,7 +19,6 @@
 	-ms-overflow-style: none;
 	width: 90%;
 	@extend .flexColumn;
-	margin: 10px 0px;
 
 	.toDoList {
 		width: 90%;
@@ -34,7 +35,7 @@
 				animation-fill-mode: forwards;
 				position: relative;
 				line-height: 50px;
-				font-size: 25px;
+				font-size: 20px;
 				height: 50px;
 				margin-top: 5px;
 				text-align: center;
@@ -44,7 +45,7 @@
 				white-space: nowrap;
 				text-overflow: ellipsis !important;
 				max-width: 90% !important;
-				margin-left: 83px;
+				margin-left: 110px;
 				text-transform: capitalize;
 
 				&:hover {
@@ -57,6 +58,9 @@
 				color: var(--green);
 				background-color: var(--white);
 				margin-left: 40px;
+				&:hover {
+					color: var(--green);
+				}
 			}
 			.darkMode {
 				transition: 0.1s all ease-in-out;

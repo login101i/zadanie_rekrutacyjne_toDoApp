@@ -18,7 +18,7 @@ export const Input = ({ addItemToList, darkMode }) => {
 
 	const addToList = (inputValue) => {
 		if (userInput === "") {
-			setIsOpen(true)
+			setIsOpen(true);
 		} else {
 			addItemToList(inputValue);
 			setUserInput("");
