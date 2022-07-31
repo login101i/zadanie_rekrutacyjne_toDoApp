@@ -29,22 +29,28 @@ export const Input = ({ addItemToList, darkMode }) => {
 		<div className="userInput">
 			<input
 				onKeyPress={handleKeyPress}
-				placeholder="ENTER TASK"
+				placeholder="ENTER COUNTRY TO VISIT"
 				onChange={(e) => handleChangeInput(e.target.value)}
 				value={userInput}
 				type="text"
 				className={darkMode ? "darkMode input " : "input"}
+				data-testid="input-component"
 			/>
 			{userInput && (
 				<div
 					className={darkMode ? "addButton darkMode" : "addButton"}
 					onClick={() => addToList(userInput)}
+					data-testid="div-add-element"
 				>
 					ADD
 				</div>
 			)}
 			{isOpen && (
-				<Modal title="Empty input! Plese try again" setIsOpen={setIsOpen} />
+				<Modal
+					title="Empty input! Plese try again"
+					setIsOpen={setIsOpen}
+					data-testid="modal-component"
+				/>
 			)}
 		</div>
 	);

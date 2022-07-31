@@ -24,7 +24,7 @@
 		width: 80vw;
 		max-width: 800px;
 		margin: auto;
-        padding-bottom:30px;
+		padding-bottom: 40px;
 		min-height: 300px;
 		max-height: 80%;
 		transition: 0.25s all ease-in-out;
@@ -61,17 +61,17 @@ h1 {
 		.container {
 			border-radius: 5px;
 			width: 80vw;
-			max-height: 80vh;
+			max-height: 600px;
 			margin: 30px auto;
 			.userInput {
 				.input {
 					height: 25px;
-					font-size: 20px;
+					font-size: 12px;
 				}
 				.addButton {
 					height: 39px;
 					width: 20%;
-					font-size: 22px;
+					font-size: 14px;
 				}
 			}
 			.todo {
@@ -92,10 +92,14 @@ h1 {
 							margin: 20px;
 						}
 					}
+					.todoCompleted {
+						font-size: 10px;
+					}
 				}
 			}
 			.done {
 				color: var(--green);
+				font-size: 16px;
 			}
 			.doneListContainer {
 				.doneList {

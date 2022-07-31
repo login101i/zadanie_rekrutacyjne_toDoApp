@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Modal, Loader } from "../../components";
 import { useFetchTasks } from "../../utils/useFetchTasks";
 
@@ -6,6 +6,9 @@ import "./ToDoList.styles.scss";
 
 export const ToDoList = ({ toDoItems, doneItems, updateLists, darkMode }) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [numberOfItems, setNumberOfItems] = useState(10);
+	const newNumberOfItems = 4;
+	const scrollContainer = useRef();
 	const { fetchData, isLoading, countries } = useFetchTasks();
 
 	useEffect(() => {
@@ -14,10 +17,10 @@ export const ToDoList = ({ toDoItems, doneItems, updateLists, darkMode }) => {
 
 	useEffect(() => {
 		updateLists(
-			countries.slice(0, 8).map((item) => item.name.official),
+			countries.slice(0, numberOfItems).map((item) => item.name.official),
 			doneItems
 		);
-	}, [countries]);
+	}, [countries, numberOfItems]);
 
 	const toDoCompleted = (item) => {
 		const newArray = toDoItems.filter((doDoItem) => doDoItem !== item);
@@ -31,6 +34,15 @@ export const ToDoList = ({ toDoItems, doneItems, updateLists, darkMode }) => {
 		updateLists(newArray, doneItems);
 	};
 
+	const onScroll = (e) => {
+		if (
+			scrollContainer.current.clientHeight + e.target.scrollTop + 1 >=
+			e.target.scrollHeight
+		) {
+			setNumberOfItems((prevState) => prevState + newNumberOfItems);
+		}
+	};
+
 	return (
 		<>
 			{isLoading ? (
@@ -39,7 +51,11 @@ export const ToDoList = ({ toDoItems, doneItems, updateLists, darkMode }) => {
 				toDoItems.length > 0 && (
 					<>
 						<h1 className="todo">TO DO</h1>
-						<div className="toDoListContainer">
+						<div
+							className="toDoListContainer"
+							onScroll={onScroll}
+							ref={scrollContainer}
+						>
 							<ul className="toDoList">
 								{toDoItems.map((item, index) => (
 									<div className="flex borderBottom" key={index}>
@@ -51,7 +67,7 @@ export const ToDoList = ({ toDoItems, doneItems, updateLists, darkMode }) => {
 										</li>
 										<button
 											className={
-												darkMode ? "todoCompleted darkMode" : "todoCompleted"
+												darkMode ? "darkMode  todoCompleted " : "todoCompleted"
 											}
 											onClick={(e) => toDoCompleted(item)}
 										>
@@ -67,7 +83,7 @@ export const ToDoList = ({ toDoItems, doneItems, updateLists, darkMode }) => {
 
 			{isOpen && toDoItems.length === 0 && (
 				<Modal
-					title="Good job! You have finished all your task!"
+					title="Good job! You have finished all your tasks!"
 					setIsOpen={setIsOpen}
 				/>
 			)}

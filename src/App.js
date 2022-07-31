@@ -19,11 +19,10 @@ export default class App extends Component {
 			darkMode: "false"
 		};
 	}
-
 	addItemToList = (inputValue) => {
 		this.setState((prevState) => ({
 			...prevState,
-			toDoItems: [...prevState.toDoItems, inputValue]
+			toDoItems: [inputValue, ...prevState.toDoItems]
 		}));
 	};
 
