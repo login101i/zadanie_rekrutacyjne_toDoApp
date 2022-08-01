@@ -6,7 +6,11 @@
 	@extend .flex;
 	flex-direction: column;
 }
-
+.virtualizedBtn {
+	width: 220px;
+	height: 40px;
+	cursor:pointer
+}
 .todo {
 	font-size: 20px;
 
@@ -56,8 +60,8 @@
 			.todoCompleted {
 				color: var(--green);
 				margin-left: 40px;
-                background-color: var(--white);
-                transition:0.1s all ease-in-out;
+				background-color: var(--white);
+				transition: 0.1s all ease-in-out;
 				&:hover {
 					color: var(--green);
 				}

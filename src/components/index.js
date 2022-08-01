@@ -4,8 +4,8 @@ import { Timer } from "./Timer/Timer.component";
 import { ToDoList } from "./ToDoList/ToDoList.component";
 import { DarkModeButton } from "./DarkModeButton/DarkModeButton.component";
 import { AppContainer } from "./AppContainer/AppContainer.component";
-import {Modal} from './Modal/Modal.component'
-import {Loader} from './Loader/Loader.component'
+import { Modal } from "./Modal/Modal.component";
+import { Loader } from "./Loader/Loader.component";
 
 export {
 	Input,
@@ -15,5 +15,5 @@ export {
 	DarkModeButton,
 	AppContainer,
 	Modal,
-    Loader
+	Loader
 };

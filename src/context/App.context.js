@@ -1,13 +1,11 @@
-import { createContext, useEffect, useReducer, useState } from "react";
+import { createContext, useState } from "react";
 
 const INITIAL_STATE = {
 	toDoItems: [],
 	doneItems: [],
 	fetchToDos: [],
-	time: setInterval(() => ({ return: new Date().toLocaleTimeString() }), 1000),
-	darkMode: "false"
+	darkMode: "false",
 };
-
 
 export const AppContext = createContext(INITIAL_STATE);
 
@@ -35,6 +33,8 @@ export const AppContextProvider = ({ children }) => {
 			doneItems
 		}));
 	};
+
+	
 
 	return (
 		<AppContext.Provider

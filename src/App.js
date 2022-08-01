@@ -1,74 +1,37 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { Timer, Input, ToDoList, DoneList } from "./components";
 import { AppContainer } from "./components";
-import { useFetchTasks } from "./utils/useFetchTasks";
+import { AppContext } from "./context/App.context";
 
-export default class App extends Component {
-	constructor(props) {
-		super(props);
+export const App = () => {
+	const {
+		appState: { toDoItems, doneItems, darkMode },
+		handleDarkMode,
+		addItemToList,
+		updateLists
+	} = useContext(AppContext);
 
-		this.state = {
-			toDoItems: [],
-			doneItems: [],
-			fetchToDos: [],
-			time: setInterval(
-				() => this.setState({ time: new Date().toLocaleTimeString() }),
-				1000
-			),
-			darkMode: "false"
-		};
-	}
-	addItemToList = (inputValue) => {
-		this.setState((prevState) => ({
-			...prevState,
-			toDoItems: [inputValue, ...prevState.toDoItems]
-		}));
-	};
+	return (
+		<>
+			<AppContainer darkMode={darkMode} handleDarkMode={handleDarkMode}>
+				<Timer darkMode={darkMode} />
+				<Input addItemToList={addItemToList} darkMode={darkMode} />
 
-	updateLists = (toDoItems, doneItems) => {
-		this.setState((prevState) => ({
-			...prevState,
-			toDoItems,
-			doneItems
-		}));
-	};
+				<ToDoList
+					toDoItems={toDoItems}
+					doneItems={doneItems}
+					updateLists={updateLists}
+					darkMode={darkMode}
+				/>
 
-	handleDarkMode = () => {
-		this.setState((prevState) => ({
-			...prevState,
-			darkMode: !prevState.darkMode
-		}));
-	};
-
-	render() {
-		return (
-			<>
-				<AppContainer
-					darkMode={this.state.darkMode}
-					handleDarkMode={this.handleDarkMode}
-				>
-					<Timer time={this.state.time} darkMode={this.state.darkMode} />
-					<Input
-						addItemToList={this.addItemToList}
-						darkMode={this.state.darkMode}
-					/>
-					<ToDoList
-						toDoItems={this.state.toDoItems}
-						doneItems={this.state.doneItems}
-						updateLists={this.updateLists}
-						darkMode={this.state.darkMode}
-					/>
-
-					<DoneList
-						toDoItems={this.state.toDoItems}
-						doneItems={this.state.doneItems}
-						handleDelete={this.handleDelete}
-						updateLists={this.updateLists}
-						darkMode={this.state.darkMode}
-					/>
-				</AppContainer>
-			</>
-		);
-	}
-}
+				<DoneList
+					toDoItems={toDoItems}
+					doneItems={doneItems}
+					updateLists={updateLists}
+					darkMode={darkMode}
+				/>
+			</AppContainer>
+		</>
+	);
+};
