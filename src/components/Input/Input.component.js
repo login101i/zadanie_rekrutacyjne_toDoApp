@@ -41,6 +41,7 @@ export const Input = ({ addItemToList, darkMode }) => {
 					className={darkMode ? "addButton darkMode" : "addButton"}
 					onClick={() => addToList(userInput)}
 					data-testid="div-add-element"
+               
 				>
 					ADD
 				</div>
